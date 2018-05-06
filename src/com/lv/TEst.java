@@ -27,25 +27,10 @@ public class TEst {
             System.out.println(entry.getKey() + "      " + entry.getValue());
         }*/
         Dog dog = new Dog("大黄");
-        Dog dog1 = new Dog("大大黄");
-        Dog dog2 = new Dog("大大大黄");
-        Dog dog3 = new Dog("小黄");
-
-        Dog[][] dogs = new Dog[2][2];
-        dogs[0][0] = dog;
-        dogs[0][1] = dog1;
-        dogs[1][0] = dog2;
-        dogs[1][1] = dog3;
-
-        ArrayList<Dog> dogArrayList = new ArrayList<>();
-        for (Dog[] dogsArray : dogs) {
-            dogArrayList.addAll(Arrays.asList(dogsArray));
+        for (int i = 0; i < 3; i++) {
+            dog = new Dog(i+"");
         }
-
-        for (Dog dog4 : dogArrayList) {
-            System.out.println(dog4);
-        }
-
+        System.out.println(dog);
     }
 
 

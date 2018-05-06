@@ -11,7 +11,7 @@ public class HotSpot {
     private int n;
     //HotSpot 被 Trajectory 访问多少次，初始默认为0
     private int times = 0;
-
+    //访问 HotSpot 的 Trajectory
     ArrayList<Trajectory> trajectories = new ArrayList<>();
 
     public HotSpot(double x, double y, int m, int n) {
