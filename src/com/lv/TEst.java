@@ -1,36 +1,23 @@
 package com.lv;
 
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.*;
 
 public class TEst {
-    public static void main(String[] args) {
-        /*HotSpot[][] hotSpots = Main.createHotSpots();
-        ArrayList<HotSpot> p1 = new ArrayList<>();
-        p1.add(hotSpots[0][1]);
-        p1.add(hotSpots[0][2]);
-        Trajectory trajectory = new Trajectory(hotSpots);
-        for (HotSpot hotSpot : p1) {
-            trajectory.map.put(hotSpot,trajectory.map.get(hotSpot) + 1);
+    public static void main(String[] args) throws Exception{
+        HotSpot[][] hotSpots = Main.createHotSpots();
+        File outFile = new File("C:\\E\\dataSet\\2018-05-06\\HotSpots\\hotSpots.txt");
+        if (!outFile.exists()) {
+            outFile.createNewFile();
         }
-
-        ArrayList<HotSpot> p2 = new ArrayList<>();
-        p2.add(hotSpots[0][1]);
-        p2.add(hotSpots[0][2]);
-
-        for (HotSpot p2_hotSpot : p2) {
-            if (!p1.contains(p2_hotSpot)) {
-                trajectory.map.put(p2_hotSpot,trajectory.map.get(p2_hotSpot) + 1);
+        FileWriter fileWriter = new FileWriter(outFile,true);
+        for (int i = 0; i < hotSpots.length; i++) {
+            for (int j = 0; j < hotSpots[i].length; j++) {
+                fileWriter.write(hotSpots[i][j].getX() + "," + hotSpots[i][j].getY() + "\n");
             }
         }
-        for (Map.Entry<HotSpot,Integer> entry : trajectory.map.entrySet()) {
-            System.out.println(entry.getKey() + "      " + entry.getValue());
-        }*/
-        Dog dog = new Dog("大黄");
-        for (int i = 0; i < 3; i++) {
-            dog = new Dog(i+"");
-        }
-        System.out.println(dog);
     }
 
 

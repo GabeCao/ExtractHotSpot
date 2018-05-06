@@ -98,9 +98,11 @@ public class FindAllHotSpots {
                 System.out.println("获得所有的 Trajectory.........." + new Date());
             }
         }
+        System.out.println(trajectories.size());
         ArrayList<HotSpot> hotSpotArrayList = geedilySelectHotSpot(trajectories,hotSpots);
+        System.out.println(hotSpotArrayList.size());
         //将HotSpot 写到 输出 文件里
-        File outFile = new File("C:\\E\\dataSet\\2018-05-06\\HotSpots\\hotSpots.txt");
+        File outFile = new File("C:\\E\\dataSet\\2018-05-06\\HotSpots\\selectedHotSpots.txt");
         if (!outFile.exists()) {
             outFile.createNewFile();
         }
@@ -109,6 +111,7 @@ public class FindAllHotSpots {
             System.out.println(hotSpot);
             fileWriter.write(hotSpot.getX() + "," + hotSpot.getY() + "\n");
         }
+        fileWriter.close();
     }
 
 
@@ -158,7 +161,22 @@ public class FindAllHotSpots {
 
             HotSpot maxHotSpot = hotSpotArrayList.get(0);
             int max = maxHotSpot.getTimes();
+            /*for (HotSpot hotSpot : hotSpotArrayList) {
+                if (hotSpot.getTimes() > max) {
+                    max = hotSpot.getTimes();
+                    maxHotSpot = hotSpot;
+                }
+            }*/
+
             for (HotSpot hotSpot : hotSpotArrayList) {
+                ArrayList<Trajectory> hotSpotTrajectory = hotSpot.trajectories;
+                int times = 0;
+                for (Trajectory trajectory : hotSpotTrajectory) {
+                    if (trajectory.isSelected == false) {
+                        times++;
+                    }
+                }
+                hotSpot.setTimes(times);
                 if (hotSpot.getTimes() > max) {
                     max = hotSpot.getTimes();
                     maxHotSpot = hotSpot;

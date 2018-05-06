@@ -99,7 +99,7 @@ public class Main {
         }
     }
 
-    private static HotSpot[][] createHotSpots() {
+    public static HotSpot[][] createHotSpots() {
         Area area = new Area();
         double r = 10;
         double hotSpotDistance = Math.sqrt(3) * r;
@@ -147,6 +147,14 @@ public class Main {
             HotSpot maxHotSpot = hotSpotArrayList.get(0);
             int max = maxHotSpot.getTimes();
             for (HotSpot hotSpot : hotSpotArrayList) {
+                ArrayList<Trajectory> hotSpotTrajectory = hotSpot.trajectories;
+                int times = 0;
+                for (Trajectory trajectory : hotSpotTrajectory) {
+                    if (trajectory.isSelected == false) {
+                        times++;
+                    }
+                }
+                hotSpot.setTimes(times);
                 if (hotSpot.getTimes() > max) {
                     max = hotSpot.getTimes();
                     maxHotSpot = hotSpot;
