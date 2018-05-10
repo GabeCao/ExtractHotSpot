@@ -21,6 +21,11 @@ public class HotSpot {
         this.n = n;
     }
 
+    public HotSpot(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public int getTimes() {
         return times;
     }
